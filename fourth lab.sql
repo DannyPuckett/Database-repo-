@@ -1,25 +1,24 @@
-﻿/* Danny Puckett Lab 4 CMPT 308 - Database Management 02/20/17 */
-//Question 1.
+----- Danny Puckett Lab 4 CMPT 308 - Database Management 02/20/17 */
+-- Question 1.
 select city
 from agents
-where aid in (select aid
+-where aid in (select aid
              from orders
              where cid = 'c006')
 ;
-//Question 2.
+-- Question 2.
 select pid, name 
 from products
 where pid in (select distinct pid
               from orders
               where aid in(select aid
-                           from orders
-                           where cid in (select cid
+                           from orders                           where cid in (select cid
                                          from customers
                                          where city = 'Kyoto')))
 order by pid DESC
 ;
 
-//Question 3.
+-- Question 3.
 select cid, name
 from customers
 where cid in (select distinct cid
@@ -28,7 +27,7 @@ where cid in (select distinct cid
                                 from orders
                                 where aid = 'a01'))
 ;
-//Question 4.
+--Question 4.
 select name, cid
 from customers
 where cid in (select distinct cid
@@ -37,7 +36,7 @@ where cid in (select distinct cid
                                             from orders
                                             where pid = 'p01'))
 ;
-//Question 5.
+--Question 5.
 select name, pid
 from products
 where pid in (select distinct cid
@@ -45,7 +44,7 @@ where pid in (select distinct cid
               where aid = 'a08')
 order by pid DESC
 ;
-//Question 6.
+--Question 6.
 select name, discount, city
 from customers
 where cid in (select distinct cid
@@ -55,7 +54,7 @@ where cid in (select distinct cid
                             where city = 'Tokyo'
                                or city = 'New York'))
 ;
-//Question 7.
+--Question 7.
 select name, cid
 from customers
 where discount in (select discount
